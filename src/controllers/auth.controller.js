@@ -40,6 +40,7 @@ export const login = async (req, res) => {
   if (!isMatch) return res.status(400).json({ error: ["Password incorrecta"] });
   const token = await createAccessToken({ id: userFound._id });
   res.cookie("token", token, {
+    httpOnly: true,
     secure: process.env.NODE_ENV === "production", // Asegura que solo se envíe en HTTPS en producción
     sameSite: "none", // O usa "none" si los dominios son distintos y usas HTTPS
   });

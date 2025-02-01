@@ -43,6 +43,7 @@ export const login = async (req, res) => {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production", // Asegura que solo se envíe en HTTPS en producción
     sameSite: "none", // O usa "none" si los dominios son distintos y usas HTTPS
+    maxAge: 86400000, // Expira en 1 día (en milisegundos)
   });
   res.json(userFound);
 };

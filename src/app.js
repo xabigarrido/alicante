@@ -9,9 +9,10 @@ app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan("dev"));
+
+app.use("/api", authRoutes);
+app.use("/api", tasksRoutes);
 app.use("/", (req, res) => {
   res.json({ titulo: "Una nueva aventura nos esperaa http://localhost:5173" });
 });
-app.use("/api", authRoutes);
-app.use("/api", tasksRoutes);
 export default app;

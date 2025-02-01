@@ -43,7 +43,7 @@ export const login = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: "none",
-    expires: 86400000, // 1 día
+    expires: "86400000", // 1 día
   });
   res.json(userFound);
 };

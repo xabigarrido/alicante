@@ -6,7 +6,7 @@ import tasksRoutes from "./routes/task.routes.js";
 import cors from "cors";
 const app = express();
 app.use(
-  cors({ origin: "https://prueba-sigma-beryl.vercel.app/", credentials: true })
+  cors({ origin: "https://prueba-sigma-beryl.vercel.app", credentials: true })
 );
 app.use(express.json());
 app.use(cookieParser());

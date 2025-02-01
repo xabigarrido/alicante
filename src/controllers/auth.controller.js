@@ -41,9 +41,11 @@ export const login = async (req, res) => {
   const token = await createAccessToken({ id: userFound._id });
   res.cookie("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production", // Asegura que solo se envíe en HTTPS en producción
-    sameSite: "none", // O usa "none" si los dominios son distintos y usas HTTPS
-    maxAge: 86400000, // Expira en 1 día (en milisegundos)
+    secure: true,
+    sameSite: "none",
+    expires: new Date(Date.now() + 86400000), // 1 día
+    domain: "https://prueba-sigma-beryl.vercel.app", // Asegúrate de que el dominio sea correcto
+    path: "/", // Asegúrate de que la ruta sea correcta
   });
   res.json(userFound);
 };

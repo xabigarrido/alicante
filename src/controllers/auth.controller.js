@@ -41,7 +41,7 @@ export const login = async (req, res) => {
   const token = await createAccessToken({ id: userFound._id });
   res.cookie("token", token, {
     secure: process.env.NODE_ENV === "production", // Asegura que solo se envíe en HTTPS en producción
-    sameSite: "lax", // O usa "none" si los dominios son distintos y usas HTTPS
+    sameSite: "none", // O usa "none" si los dominios son distintos y usas HTTPS
   });
   res.json(userFound);
 };

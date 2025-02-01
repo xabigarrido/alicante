@@ -5,8 +5,23 @@ import cookieParser from "cookie-parser";
 import tasksRoutes from "./routes/task.routes.js";
 import cors from "cors";
 const app = express();
+const allowedOrigins = [
+  "https://prueba-sigma-beryl.vercel.app",
+  "https://fazt.vercel.app",
+  "http://localhost:5173",
+];
+
 app.use(
-  cors({ origin: "https://prueba-sigma-beryl.vercel.app", credentials: true })
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
 );
 app.use(express.json());
 app.use(cookieParser());

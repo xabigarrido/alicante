@@ -44,8 +44,6 @@ export const login = async (req, res) => {
     secure: true,
     sameSite: "none",
     expires: new Date(Date.now() + 86400000), // 1 día
-    domain: "https://prueba-sigma-beryl.vercel.app", // Asegúrate de que el dominio sea correcto
-    path: "/", // Asegúrate de que la ruta sea correcta
   });
   res.json(userFound);
 };
